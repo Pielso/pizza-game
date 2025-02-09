@@ -1,0 +1,190 @@
+
+/*BODY*/
+.start-body {
+    background-image: url("start-body-image.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.restaurant-body {
+    background-image: url("restaurant-body-image.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 99%;
+}
+.kitchen-body {
+    background-image: url("kitchen-body-image.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 99%;
+}
+.pantry-body {
+    background-image: url("pantry-body-image.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 99%;
+}
+.office-body {
+    background-image: url("office-body-image.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 99%;
+}
+.bank-body {
+    background-image: url("bank-body-image.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 99%;
+}
+
+
+/*HEADERS*/
+.start-header {
+    background: black;
+    margin: 0;
+    padding-top: 0; bottom: 0;
+
+    width: 100%;
+    height: 30%;
+    font-size: 60px;
+    color: crimson;
+    font-family: fantasy;
+    text-align: center;
+
+
+}
+.start-header .small-break{
+    font-size: 10px;
+}
+.start-button {
+    font-size: 30px;
+}
+
+.header-table {
+    background-color: cornsilk;
+    opacity: 80%;
+    width: 100%;
+    font-size: 160%;
+}
+.header-table td {
+    border: solid black 1px;
+}
+.header-table .leftCell {
+    text-align: left; padding-left: 1%;
+    width: 20%;
+}
+.header-table .middleCell {
+    text-align: left; padding-left: 1%;
+    width: 20%;
+}
+.header-table .rightCell {
+    text-align: left; padding-left: 1%;
+    width: 20%;
+}
+.header-values {
+    color: #3c12ac;
+}
+
+
+/*FOOTER*/
+.footer-panel {
+    position:absolute;
+    width:99.3%;
+    bottom:0;
+}
+.footer-button-table {
+    background-color: cornsilk;
+    width: 99%;
+    opacity: 80%;
+    margin-top: 5%;
+    font-size: 160%;
+}
+.footer-button-table .footer-cell-left {
+    width: 15%;
+}
+.footer-button-table .footer-cell-middle {
+    width: 15%;
+}
+.footer-button-table .footer-cell-right {
+    width: 15%;
+}
+
+
+/* FOOTER PANEL BUTTONS */
+.button-3 {
+    appearance: none;
+    background-color: cornsilk;
+    border: 1px solid rgba(27, 31, 35, .15);
+    border-radius: 6px;
+    box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+    box-sizing: border-box;
+    color: black;
+    cursor: pointer;
+    display: inline-block;
+    font-family: -apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    padding: 6px 16px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: center;
+    white-space: nowrap;
+    width: 100%;
+ }
+.button-3:focus:not(:focus-visible):not(.focus-visible) {
+    box-shadow: none;
+    outline: none;
+}
+.button-3:hover {
+    background-color: #df9dae;
+}
+.button-3:focus {
+    box-shadow: rgba(46, 164, 79, .4) 0 0 0 3px;
+    outline: none;
+}
+.button-3:disabled {
+    background-color: #94d3a2;
+    border-color: rgba(27, 31, 35, .1);
+    color: rgba(255, 255, 255, .8);
+    cursor: default;
+}
+.button-3:active {
+    background-color: #bf4d98;
+    box-shadow: rgba(20, 70, 32, .2) 0 2px 0 inset;
+}
+
+/*DATA-TABLES*/
+.create-pizza-table {
+    background-color: cornsilk;
+    opacity: 65%;
+    width: fit-content;
+    font-size: 100%;
+    margin-top: 1%;
+    margin-left: 1%;
+    padding: 1%;
+}
+.locked-text{
+    -webkit-user-select: none;
+    pointer-events: visibleFill;
+}
+.table-of-pizza-recipes {
+    background-color: cornsilk;
+    opacity: 65%;
+    width: fit-content;
+    font-size: 100%;
+    margin-left: 1%;
+    margin-right: 1%;
+    padding: 1%;
+    float: right;
+}
+
+
+
+
+
+
+

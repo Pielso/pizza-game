@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="/styling.css">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" http-equiv="content-type" charset="utf-8">
+    <title>Title</title>
+</head>
+<body class="kitchen-body">
+
+<table class="header-table">
+    <tr>
+        <td class="leftCell">
+            CASH:
+            <!--/*@thymesVar id="cash" type="Long"*/-->
+            <span class="header-values" th:text="${cash}"></span>
+        </td>
+        <td class="middleCell">
+            DEBT:
+            <span style="color: #df0909" th:text="${debt}"></span>
+        </td>
+        <td class="middleCell">
+            CUSTOMERS:
+            <span class="header-values" th:text="${amountOfCustomers}"></span>
+        </td>
+        <td class="middleCell">
+            TOPPINGS:
+        </td>
+
+        <td class="rightCell">
+            DAY:
+            <span class="header-values" th:text="${day}"></span>
+        </td>
+
+    </tr>
+</table>
+
+<br>
+
+<table class="create-pizza-table">
+    <tr>
+        <td>
+            <p>
+                CREATE A NEW RECIPE
+            </p>
+            <p>
+                (MAX 9 INGREDIENTS)
+            </p>
+        </td>
+    </tr>
+</table>
+
+<table class="table-of-pizza-recipes">
+    <tr>
+        <td style="font-size: 150%">Current recipes:</td>
+    </tr>
+    <tr th:each="pizza:${pizzas}">
+        <td th:text="${pizza.nameOfPizza}">
+            <td>
+                <form action="/pizzagame/kitchen/delete-pizza" method="post">
+                    <label>
+                        <input type="number" hidden="hidden" name="id" th:value="${pizza.getId()}"/>
+                        <button type="submit">DELETE</button>
+                    </label>
+
+                </form>
+            </td>
+        </td>
+    </tr>
+</table>
+
+
+
+<br>
+
+
+
+
+<table class="create-pizza-table">
+    <tr>
+        <td>
+            <form class="locked-text" action="/pizzagame/kitchen" method="post">
+                <label>
+                    <input type="text" name="nameOfPizza" value="Name your pizza">
+                </label>
+                <br>
+                <label>
+                    <input type="text" name="topping1" value="Dough" readonly>
+                </label>
+                <br>
+                <label>
+                    <input type="text" name="topping2" value="Tomato Sauce" readonly>
+                </label>
+                <br>
+                <label>
+                    <input type="text" name="topping3" value="Cheese" readonly>
+                </label>
+                <br>
+                <label>
+                    <input type="text" name="topping4" list="toppings" class="select-only" readonly>
+                </label>
+                <br>
+                <label>
+                    <input type="text" name="topping5" list="toppings" class="select-only" readonly>
+                </label>
+                <br>
+                <label>
+                    <input type="text" name="topping6" list="toppings" class="select-only" readonly>
+                </label>
+                <br>
+                <label>
+                    <input type="text" name="topping7" list="toppings" class="select-only" readonly>
+                </label>
+                <br>
+                <label>
+                    <input type="text" name="topping8" list="toppings" class="select-only" readonly>
+                </label>
+                <br>
+                <label>
+                    <input type="text" name="topping9" list="toppings" class="select-only" readonly>
+                </label>
+                <br>
+                <datalist id="toppings">
+                    <option value="Ham">
+                    <option value="Mushroom">
+                    <option value="Kebab">
+                    <option value="Tuna">
+                    <option value="Beef">
+                    <option value="Pork">
+                    <option value="Olives">
+                    <option value="Paprika">
+                    <option value="Onion">
+                    <option value="Pineapple">
+                    <option value="Shrimps">
+                    <option value="Bacon">
+                    <option value="Jalapeños">
+                    <option value="Sauce">
+                </datalist>
+                <br>
+                <label>
+                    <button type="submit">SAVE RECIPE</button>
+                </label>
+            </form>
+        </td>
+    </tr>
+</table>
+
+<div th:if="${error}">
+    <table class="table-of-pizza-recipes">
+        <tr th:each="error:${error}">
+            <td th:text="${error}">
+            </td>
+        </tr>
+    </table>
+
+</div>
+
+<script>
+    document.querySelectorAll('.select-only').forEach(input => {
+        input.addEventListener('focus', function () {
+            this.removeAttribute('readonly'); // Tillåt val från listan
+        });
+
+        input.addEventListener('blur', function () {
+            this.setAttribute('readonly', true); // Lås igen efter val
+        });
+
+        input.addEventListener('input', function () {
+            if (!document.querySelector(`#toppings option[value="${this.value}"]`)) {
+                this.value = ""; // Rensa om det inte är ett giltigt alternativ
+            }
+        });
+    });
+</script>
+
+
+
+
+
+<footer class="footer-panel">
+    <table class="footer-button-table">
+        <tr>
+
+            <td class="footer-cell-left">
+                <form action="/pizzagame/bank" method="get">
+                    <label>
+                        <button class="button-3" type="submit">BANK</button>
+                    </label>
+                </form>
+            </td>
+
+            <td class="footer-cell-middle">
+                <form action="/pizzagame/office" method="get">
+                    <label>
+                        <button class="button-3" type="submit">OFFICE</button>
+                    </label>
+                </form>
+            </td>
+
+            <td class="footer-cell-middle">
+                <form action="/pizzagame/pantry" method="get">
+                    <label>
+                        <button class="button-3" type="submit">PANTRY</button>
+                    </label>
+                </form>
+            </td>
+
+            <td class="footer-cell-middle">
+                <form action="/pizzagame/restaurant" method="get">
+                    <label>
+                        <button class="button-3" type="submit">RESTAURANT</button>
+                    </label>
+                </form>
+            </td>
+
+            <td class="footer-cell-middle">
+                <form action="/pizzagame/kitchen" method="get">
+                    <label>
+                        <button class="button-3" type="submit">KITCHEN</button>
+                    </label>
+                </form>
+            </td>
+
+            <td class="footer-cell-right">
+                <form action="/pizzagame/nextday" method="get">
+                    <label>
+                        <button class="button-3" type="submit">NEXT DAY</button>
+                    </label>
+                </form>
+            </td>
+
+        </tr>
+    </table>
+</footer>
+
+</body>
+</html>

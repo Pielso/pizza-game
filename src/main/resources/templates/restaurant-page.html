@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="/styling.css">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" http-equiv="content-type" charset="utf-8">
+    <title>Title</title>
+</head>
+<body class="restaurant-body">
+
+<table class="header-table">
+    <tr>
+        <td class="leftCell">
+            CASH:
+            <!--/*@thymesVar id="cash" type="Long"*/-->
+            <span class="header-values" th:text="${cash}"></span>
+        </td>
+        <td class="middleCell">
+            DEBT:
+            <span style="color: #df0909" th:text="${debt}"></span>
+        </td>
+        <td class="middleCell">
+            CUSTOMERS:
+            <span class="header-values" th:text="${amountOfCustomers}"></span>
+        </td>
+        <td class="middleCell">
+            TOPPINGS:
+        </td>
+
+        <td class="rightCell">
+            DAY:
+            <span class="header-values" th:text="${day}"></span>
+        </td>
+
+    </tr>
+</table>
+
+<table class="table-of-pizza-recipes">
+    <thead>
+    <tr>
+        <th>
+            Customer Name
+        </th>
+        <th>
+            Favorite 1
+        </th>
+        <th>
+            Favorite 2
+        </th>
+        <th>
+            Favorite 3
+        </th>
+    </tr>
+    </thead>
+
+
+    <tr th:each="customer:${customers}">
+        <td th:text="${customer.getCustomerName()}">
+        </td>
+        <td th:text="${customer.getFavoriteTopping1()}">
+        </td>
+        <td th:text="${customer.getFavoriteTopping2()}">
+        </td>
+        <td th:text="${customer.getFavoriteTopping3()}">
+        </td>
+    </tr>
+</table>
+
+<footer class="footer-panel">
+    <table class="footer-button-table">
+        <tr>
+
+            <td class="footer-cell-left">
+                <form action="/pizzagame/bank" method="get">
+                    <label>
+                        <button class="button-3" type="submit">BANK</button>
+                    </label>
+                </form>
+            </td>
+
+            <td class="footer-cell-middle">
+                <form action="/pizzagame/office" method="get">
+                    <label>
+                        <button class="button-3" type="submit">OFFICE</button>
+                    </label>
+                </form>
+            </td>
+
+            <td class="footer-cell-middle">
+                <form action="/pizzagame/pantry" method="get">
+                    <label>
+                        <button class="button-3" type="submit">PANTRY</button>
+                    </label>
+                </form>
+            </td>
+
+            <td class="footer-cell-middle">
+                <form action="/pizzagame/restaurant" method="get">
+                    <label>
+                        <button class="button-3" type="submit">RESTAURANT</button>
+                    </label>
+                </form>
+            </td>
+
+            <td class="footer-cell-middle">
+                <form action="/pizzagame/kitchen" method="get">
+                    <label>
+                        <button class="button-3" type="submit">KITCHEN</button>
+                    </label>
+                </form>
+            </td>
+
+            <td class="footer-cell-right">
+                <form action="/pizzagame/nextday" method="get">
+                    <label>
+                        <button class="button-3" type="submit">NEXT DAY</button>
+                    </label>
+                </form>
+            </td>
+
+        </tr>
+    </table>
+</footer>
+
+</body>
+</html>
