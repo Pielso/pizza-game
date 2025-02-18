@@ -5,8 +5,7 @@ import db_game.repositories.ToppingIndexRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Objects;
+
 
 @Service
 public class ToppingIndexService {
@@ -21,4 +20,15 @@ public class ToppingIndexService {
     public void deleteToppingIndexById(Long id){
         toppingIndexRepo.deleteById(id);
     }
+
+//    public List <String> getListOfServedToppingsById(Long id){
+//        List <String> listOfServedToppings = new ArrayList<>();
+//        listOfServedToppings.add(toppingIndexRepo.findById(id).get().getTopping4());
+//        listOfServedToppings.add(toppingIndexRepo.findById(id).get().getTopping5());
+//        listOfServedToppings.add(toppingIndexRepo.findById(id).get().getTopping6());
+//        listOfServedToppings.add(toppingIndexRepo.findById(id).get().getTopping7());
+//        listOfServedToppings.add(toppingIndexRepo.findById(id).get().getTopping8());
+//        listOfServedToppings.add(toppingIndexRepo.findById(id).get().getTopping9());
+//        return listOfServedToppings;
+//    }
 }

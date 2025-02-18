@@ -34,26 +34,31 @@
     </tr>
 </table>
 
-<table class="table-of-pizza-recipes">
+<br>
+
+<table class="customers-table">
     <thead>
     <tr>
-        <th>
-            Customer Name
+        <th class="customer-table-head">
+            NAME
         </th>
-        <th>
-            Favorite 1
+        <th class="customer-table-head">
+            FAVORITE 1
         </th>
-        <th>
-            Favorite 2
+        <th class="customer-table-head">
+            FAVORITE 2
         </th>
-        <th>
-            Favorite 3
+        <th class="customer-table-head">
+            FAVORITE 3
+        </th>
+        <th class="customer-table-head">
+            ACTION
         </th>
     </tr>
     </thead>
 
 
-    <tr th:each="customer:${customers}">
+    <tr class="customer-table-cells" th:each="customer:${customers}">
         <td th:text="${customer.getCustomerName()}">
         </td>
         <td th:text="${customer.getFavoriteTopping1()}">
@@ -61,6 +66,21 @@
         <td th:text="${customer.getFavoriteTopping2()}">
         </td>
         <td th:text="${customer.getFavoriteTopping3()}">
+        </td>
+        <td>
+            <form action="/pizzagame/restaurant/serve-customer" method="post">
+                <label>
+                    <input type="hidden" name="customerId" th:value="${customer.getCustomerId()}"/>
+                    <input type="hidden" name="favoriteTopping1" th:value="${customer.getFavoriteTopping1()}"/>
+                    <input type="hidden" name="favoriteTopping2" th:value="${customer.getFavoriteTopping2()}"/>
+                    <input type="hidden" name="favoriteTopping3" th:value="${customer.getFavoriteTopping3()}"/>
+                    <select name="selected-pizza">
+                        <option th:each="pizza:${pizzas}" th:value="${pizza.getId()}" th:text="${pizza.getNameOfPizza()}">
+                        </option>
+                    </select>
+                    <button type="submit">SERVE</button>
+                </label>
+            </form>
         </td>
     </tr>
 </table>

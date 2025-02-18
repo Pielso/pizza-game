@@ -4,8 +4,7 @@ import db_game.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 //@RequestMapping("/")
@@ -21,6 +20,8 @@ public class HomeAndNavigationController {
     private PizzaService pizzaService;
     @Autowired
     CustomerService customerService;
+    @Autowired
+    ToppingIndexService toppingIndexService;
 
     @GetMapping("/pizzagame")
     public String getHomePage(){
@@ -49,6 +50,7 @@ public class HomeAndNavigationController {
 
             // Page Specifics
             model.addAttribute("customers", customerService.getAllCustomers());
+            model.addAttribute("pizzas", pizzaService.getAllPizzas());
 
             return "restaurant-page";
         }
@@ -57,6 +59,24 @@ public class HomeAndNavigationController {
         }
 
     }
+
+//    @PostMapping("/pizzagame/restaurant/serve-customer")
+//    public String serveCustomer(@ModelAttribute Customer customer, Long id){
+//        Long customerSatisfaction = 0L;
+//        if (toppingIndexService.getListOfServedToppingsById(id).contains(customer.getFavoriteTopping1())){
+//            customerSatisfaction =+1L;
+//        }
+//        if (toppingIndexService.getListOfServedToppingsById(id).contains(customer.getFavoriteTopping2())){
+//            customerSatisfaction =+1L;
+//        }
+//        if (toppingIndexService.getListOfServedToppingsById(id).contains(customer.getFavoriteTopping3())){
+//            customerSatisfaction =+1L;
+//        }
+//        cashService.addCash((customer.getCashOnHand() + customerSatisfaction));
+//        customerService.deleteCustomerById(customer.getCustomerId());
+//
+//        return "redirect:/pizzagame/restaurant";
+//    }
 
     @GetMapping("/pizzagame/kitchen")
     public String getKitchenPage(Model model){
@@ -70,6 +90,7 @@ public class HomeAndNavigationController {
 
             // Page Specifics
             model.addAttribute("pizzas", pizzaService.getAllPizzas());
+            model.addAttribute("toppings", customerService.getListOfToppings());
             return "kitchen-page";
         }
         else {
@@ -140,8 +161,9 @@ public class HomeAndNavigationController {
             customerService.generateCustomers(10);
             model.addAttribute("cash", cashService.getAmountOfCash());
             model.addAttribute("debt", cashService.getAmountOfDebt());
-
+            model.addAttribute("customers", customerService.getAllCustomers());
             model.addAttribute("day", dayService.getAmountOfDaysPassed());
+            model.addAttribute("pizzas", pizzaService.getAllPizzas());
             return "redirect:/pizzagame/restaurant";
         }
         else {

@@ -10,7 +10,7 @@ public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long customerId;
 
     private String customerName;
     private String favoriteTopping1;
@@ -29,8 +29,8 @@ public class Customer {
 
     }
 
-    public Long getId() {
-        return id;
+    public Long getCustomerId() {
+        return customerId;
     }
 
     public String getCustomerName() {

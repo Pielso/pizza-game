@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CashService {
@@ -21,6 +22,12 @@ public class CashService {
         List <Cash> cash = cashRepo.findAll();
         Cash tempCash = cash.getFirst();
         return tempCash.getAmountOfCash();
+    }
+
+    public void addCash(Long dollarsEarned){
+        Optional<Cash> cash = cashRepo.findById(1L);
+        Long currentCash = cash.get().getAmountOfCash();
+        cash.get().setAmountOfCash(currentCash + dollarsEarned);
     }
 
     public Long getAmountOfDebt(){
